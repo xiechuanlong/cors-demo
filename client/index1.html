@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h3>非跨域请求</h3>
+        <button @click="request('post', '//127.0.0.1:8088/api/demo1')">非跨域请求输出请求头信息：post请求</button><br/></br>
+        <h3>简单请求</h3>
+        <button @click="request('post', '//127.0.0.1:8089/corsapi/demo1')">发送简单请求：post请求</button><br/></br>
+        <button @click="request('post', '//127.0.0.1:8089/corsapi/demo1', {'content-type': 'application/x-www-form-urlencoded'}, {test: 1})">发送简单请求：post请求(设置content-type: application/x-www-form-urlencoded)</button><br /></br>
+        <h3>复杂请求</h3>  
+        <button @click="request('put', '//127.0.0.1:8089/corsapi/demo1')">发送跨域复杂请求：put请求</button><br/><br/>
+        <button @click="request('post', '//127.0.0.1:8089/corsapi/demo1', {'content-type': 'appliction/json'}, {test: 2})">发送复杂请求：post请求(设置content-type: appliction/json)</button><br /></br>
+        <button @click="request('post', '//127.0.0.1:8089/corsapi/demo1', {'cors-test': true})">发送复杂请求：post请求(设置cors-test: true)</button><br /></br>
+        <h3>cookie设置</h3>
+        <button @click="cookieRequest('post', '//127.0.0.1:8089/corsapi/demo2')">发送简单请求：post请求带cookie</button><br /></br>
+        <button @click="cookieRequest('post', '//127.0.0.1:8089/corsapi/demo1', {'content-type': 'appliction/json'})">发送复杂请求：post请求带cookie</button><br /></br>
+        <h3>Access-Control-Max-Age(需要在服务端设置)</h3>
+        <button @click="request('put', '//127.0.0.1:8089/corsapi/demo1')">发送跨域复杂请求：put请求</button><br/><br/>
+        <button @click="request('post', '//127.0.0.1:8089/corsapi/demo1', {'cors-test': true})">发送复杂请求：post请求(设置cors-test: true)</button><br /></br>
+    </div>
+</body>
+<script src="./axios.js"></script>
+<script src="./vue.js"></script>
+<script src='./app.js'></script>
+</html>
